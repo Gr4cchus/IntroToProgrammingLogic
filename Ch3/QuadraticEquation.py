@@ -8,12 +8,12 @@ c = float(input('What is c?: '))
 discriminant = b**2 - 4 * a * c
 
 if discriminant > 0:
-    r1 = (-b + sqrt(discriminant)) / (2 * c)
-    r2 = (-b - sqrt(discriminant)) / (2 * c)
+    r1 = (-b + sqrt(discriminant)) / (2 * a)
+    r2 = (-b - sqrt(discriminant)) / (2 * a)
     print('Root one is: ', format(r1, '.2f'),
           '\nRoot two is: ', format(r2, '.2f'), sep='')
 elif discriminant == 0:
-    r1 = (-b + sqrt(discriminant)) / (2 * c)  # sqrt must turns this to float?
+    r1 = (-b + sqrt(discriminant)) / (2 * a)  # sqrt must turns this to float?
     print('The discriminant is 0 so the root is: ', end='')
     print(format(r1, '.2f'))
 else:
