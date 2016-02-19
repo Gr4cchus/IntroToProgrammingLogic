@@ -1,5 +1,4 @@
 # Consumer Price Index
-
 cpi = 238.25
 accumulatorYear = 0
 
