@@ -7,9 +7,9 @@ print()
 print('Day\t\tSalary\t\tTotal')
 print('-------------------------')
 
-for x in range(1, days + 1):
+for day in range(1, days + 1):
     startingMoney = totalMoney
     totalMoney += totalMoney
-    totalMoneyFormat = format(totalMoney, ',.2f')
-    startingMoneyFormat = format(startingMoney, ',.2f')
-    print(x, '\t\t$' + str(startingMoneyFormat), '\t\t$' + str(totalMoneyFormat))
+    # Tried formatting it with padding but string complications then seem to ensue.
+    print(day, str(format(startingMoney, ',.2f')),
+          str(format(totalMoney, ',.2f')), sep='\t\t$')
