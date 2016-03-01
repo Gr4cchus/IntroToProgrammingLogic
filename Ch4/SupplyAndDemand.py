@@ -1,11 +1,10 @@
 # Supply and Demand
-soybeanQuantity = 80.00
-startingPrice = 12.00
+quantity = 80
+price = 18
 
-print("YEAR", "QUANTITY", "PRICE", sep="\t\t")
-print("2014", soybeanQuantity, startingPrice, sep="\t\t")
+print("Year", "Quantity", "Price", sep="\t\t")
 
-for year in range(2015, 2019):
-    startingPrice = 20 - .1 * soybeanQuantity
-    soybeanQuantity = 5 * startingPrice - 10
-    print(year, soybeanQuantity, startingPrice, sep="\t\t")
+for year in range(2014,2019):
+    quantity = 5 * price - 10
+    price = 20 - .1 * quantity
+    print(year, quantity, price, sep="\t\t")
