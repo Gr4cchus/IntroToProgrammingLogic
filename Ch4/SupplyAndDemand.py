@@ -8,3 +8,4 @@ for year in range(2014,2019):
     quantity = 5 * price - 10
     price = 20 - .1 * quantity
     print(year, quantity, price, sep="\t\t")
+
