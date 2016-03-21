@@ -8,7 +8,7 @@ secondBiannualDifference = 0.0
 
 for firstMonthSet in range(6):
     currentInvestmentTotal *= negativePercentageYield
-    firstBiannualDifference = 10000 - currentInvestmentTotal
+    firstBiannualDifference = 10000 - currentInvestmentTotal  # Annoying IDE redecorated issue?
     print(format(currentInvestmentTotal, ',.2f'))
     firstInvestmentTotal = currentInvestmentTotal
 
