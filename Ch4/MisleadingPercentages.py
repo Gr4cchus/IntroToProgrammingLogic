@@ -1,27 +1,14 @@
 # Misleading Percentages
-currentInvestmentTotal = 10000
-positivePercentageYield = 1.18
-negativePercentageYield = .84
+investment = 10000
+gain = 1.18
+loss = .84
+total = 0
 
-firstBiannualDifference = 0.0
-secondBiannualDifference = 0.0
-
-for firstMonthSet in range(6):
-    currentInvestmentTotal *= negativePercentageYield
-    firstBiannualDifference = 10000 - currentInvestmentTotal  # Annoying IDE redecorated issue?
-    print(format(currentInvestmentTotal, ',.2f'))
-    firstInvestmentTotal = currentInvestmentTotal
-
-print()
-
-for secondMonthSet in range(6):
-    currentInvestmentTotal *= positivePercentageYield
-    secondBiannualDifference = 10000 - currentInvestmentTotal
-    print(format(currentInvestmentTotal, ',.2f'))
-    secondInvestmentTotal = currentInvestmentTotal - firstInvestmentTotal
-
-print("The first half of the Biannual year saw a loss of", format(firstBiannualDifference, ',.2f'),
-      "from initial investment.")
-print("The second half of the Biannual year saw a loss of", format(secondBiannualDifference, ',.2f'),
-      "from initial investment,\n but a gain of", format(secondInvestmentTotal, ',.2f'),
-      "from the previous six months.")
+for biannual in range(2):
+    for months in range(6):
+        if biannual == 0:
+            investment *= loss
+        else:
+            investment *= gain
+print('The value of the stock at the end of the year is: $',
+      format(investment, '.2f'), sep="")
