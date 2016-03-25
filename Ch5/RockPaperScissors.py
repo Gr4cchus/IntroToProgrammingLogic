@@ -1,7 +1,8 @@
-#import
+# import
 from random import randint
 
-#main function
+
+# main function
 def main():
     compPick = randint(1,3)
     compOut = compchoice(compPick)
@@ -12,10 +13,10 @@ def main():
 #    print(" debug info comppick",comppick, "\n debug info userpick", userpick, "\n debug info compout", compout)
 
 
-#User input
+# User input
 def userinput():
     userChoice = input("Rock, Paper, or Scissors? ")
-    while userChoice != ("Rock") and userChoice != ("Paper") and userChoice != ("Scissors"):
+    while userChoice != "Rock" and userChoice != "Paper" and userChoice != "Scissors":
         print(userChoice)
         userChoice = input("That was not a valid choice. Rock, Paper or Scissors? ")
 
@@ -28,31 +29,33 @@ def userinput():
 
     return userPick
 
-#Converts random number to Rock, Paper or Scissors
+
+# Converts random number to Rock, Paper or Scissors
 def compchoice(compPick):
 
     if compPick == 1:
         compOut = 'Rock'
-    elif compPick ==  2:
+    elif compPick == 2:
         compOut = 'Paper'
     elif compPick == 3:
         compOut = 'Scissors'
 
     return compOut
 
-#Results
+
+# Results
 def results(userPick, compPick, compOut):
     if userPick == compPick:
-        print("The computer picked", compOut, "Tie")
-    elif (userPick == 1 and compPick == 3) or (userPick == 2 and compPick == 1) or (userPick ==3 and compPick == 2):
-        print("The computer picked", compOut, "You Win")
-    elif (userPick == 1 and compPick == 2) or ( userPick == 2 and compPick == 3) or (userPick == 3 and compPick == 1):
-        print("The computer picked", compOut, "You Lose")
+        print("The computer picked", compOut, "it is a tie.")
+    elif (userPick == 1 and compPick == 3) or (userPick == 2 and compPick == 1) or (userPick == 3 and compPick == 2):
+        print("The computer picked", compOut, "you Win.")
+    elif (userPick == 3 and compPick == 1) or (userPick == 1 and compPick == 2) or (userPick == 2 and compPick == 3):
+        print("The computer picked", compOut, "you Lose.")
+
 
 def again():
-    playAgain = input("Do you want to play again? Yes or No ")
-    while playAgain != ("Yes") and playAgain != ("No"):
-        print(playAgain)
+    playAgain = input("Do you want to play again? Yes or No: ")
+    while playAgain != "Yes" and playAgain != "No":
         playAgain = input("That was not a valid choice. Yes or No? ")
 
     if playAgain == "Yes":
@@ -60,8 +63,7 @@ def again():
     else:
         exit
 
-#Call main
+
+# Call main
 main()
-
-
-#John Berggren
+# John Berggren, Alex Hivento, Lane Sandburg
