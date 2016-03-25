@@ -1,14 +1,45 @@
-import random
+# Paint Job Estimator
 
-def(main):
-    students = ['name', 'name2', 'name3', 'name4']
-    fw = open("MWTeam", 'w')    # will create a file named MWTeam and 'w' will allow write access (r,w,a are options)
 
-    team = []
-    upper = 14
-    for i in range(5):
-        for k in range(3):
-            random.randint(0,upper)     # why specify upper?
-            append.team(students.pop(z))    # append puts in, pop takes out
-            upper -= 1
-        fw.write(team[0]+ '' + team[])
+def main():
+    output()
+
+
+def num_gallons():
+    totalGallons = squareFeet / 112
+    if totalGallons % 1 != 0:
+        totalGallons += 1
+    return int(totalGallons)
+
+
+def calc_labor_hours():
+    laborHours = 8 * num_gallons()
+    return laborHours
+
+
+def calc_paint_cost():
+    paintTotal = paintPerPrice * num_gallons()
+    return paintTotal
+
+
+def calc_labor_amt():
+    laborCharge = 35 * calc_labor_hours()
+    return laborCharge
+
+
+def total_cost():
+    return calc_paint_cost() + calc_labor_amt()
+
+
+def output():
+    print("The number of gallons of paint required is:", num_gallons())
+    print("The hours of labor required:", calc_labor_hours())
+    print("The cost of the paint is: $", calc_paint_cost(), sep="")
+    print("The labor charges are: $", calc_labor_amt(), sep="")
+    print("The total cost of the paint job is: $", total_cost(), sep="")
+
+
+squareFeet = int(input("Enter square feet of wall space to be painted: $"))
+paintPerPrice = float(input("Enter the price of paint: $"))
+
+main()

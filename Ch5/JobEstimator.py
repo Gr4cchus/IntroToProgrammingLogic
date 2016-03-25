@@ -1,45 +1,51 @@
 # Paint Job Estimator
 
+
 def main():
-    sqft = int(input("Enter square feet of wall space to be painted: "))
-    gallons = num_gallons(sqft)
-    laborHours = calc_labor_hours(gallons)
-    paint = float(input("Enter the price of paint: "))
-    paintCost = calc_paint_cost(paint, gallons)
-    laborAmount = calc_labor_amt(laborHours)
-    totalCost = total_cost(laborAmount, paintCost)
-    output(gallons, laborHours, paintCost, laborAmount, totalCost)
+    squareFeet = int(input("Enter square feet of wall space to be painted: "))
+    paintPerPrice = float(input("Enter the price of paint: "))
+
+    numberOfGallons = num_gallons(squareFeet)
+    laborHours = calc_labor_hours(squareFeet)
+    paintCost = calc_paint_cost(paintPerPrice, numberOfGallons)
+    laborCost = calc_labor_amt(laborHours)
+    totalCost = total_cost(paintCost, laborCost)
+
+    print("The number of gallons of paint required is:", numberOfGallons)
+    print("The hours of labor required:", laborHours)
+    print("The cost of the paint is: $", format(paintCost, '.2f'), sep="")
+    print("The labor charges are: $", format(laborCost, '.2f'), sep="")
+    output(totalCost)
 
 
-def num_gallons(sqft):
-    total = sqft / 112
+def num_gallons(squareFeet):
+    total = squareFeet / 112
     if total % 1 != 0:
         total += 1
     return int(total)
 
 
-def calc_labor_hours(gallons):
-    return 8 * gallons
+def calc_labor_hours(squareFeet):
+    hours = squareFeet / 14
+    if hours % 1 != 0:
+        hours += 1
+    return int(hours)
 
 
-def calc_paint_cost(price, gallons):
-    return price * gallons
+def calc_paint_cost(paintPerPrice, numberOfGallons):
+    return paintPerPrice * numberOfGallons
 
 
 def calc_labor_amt(laborHours):
     return 35 * laborHours
 
 
-def total_cost(laborAmount, paintCost):
-    return laborAmount + paintCost
+def total_cost(paintCost, laborCost):
+    return paintCost + laborCost
 
 
-def output(gallons, laborHours, paintCost, laborAmount, totalCost):
-    print("The number of gallons of paint required is:", gallons)
-    print("The hours of labor required:", laborHours)
-    print("The cost of the paint is: $", paintCost, sep="")
-    print("The labor charges are: $", laborAmount, sep="")
-    print("The total cost of the paint job is: $", totalCost, sep="")
+def output(totalCost):
+    print("The total cost of the paint job is: $", format(totalCost, '.2f'), sep="")
 
 
 main()
