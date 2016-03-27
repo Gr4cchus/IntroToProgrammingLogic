@@ -3,31 +3,37 @@ from math import sqrt
 
 
 def main():
-    userChoice = menu()
-    if userChoice == 'spherical volume':
-        r, h = formulaInputs()
-        sphereVolume(r)
+    while True:
         menu()
-    elif userChoice == 'spherical surface':
-        r, h = formulaInputs()
-        sphereSurface(r)
-        menu()
-    elif userChoice == 'cylinder volume':
-        r, h = formulaInputs()
-        cylinderVolume(r, h)
-        menu()
-    elif userChoice == 'cylinder surface':
-        r, h = formulaInputs()
-        cylinderSurface(r, h)
-        menu()
-    elif userChoice == 'cone volume':
-        r, h = formulaInputs()
-        coneVolume(r, h)
-        menu()
-    elif userChoice == 'cone surface':
-        r, h = formulaInputs()
-        coneSurface(r, h)
-        menu()
+
+        userChoice = input("Enter your numerical choice or 'q' to exit: ")
+        optionList = ['1', '2', '3', '4', '5', '6']
+
+        # while int(userChoice) not in range(1, 7) and userChoice != 'q':
+        while userChoice not in optionList and userChoice != 'q':
+            userChoice = input("Please enter the precise choice: ")
+            # quit program
+        if userChoice == 'q':
+            break
+
+        # prompt radius
+        if int(userChoice) in range(1, 3):
+            r = formulaInputs(1)
+            if userChoice == '1':
+                sphereVolume(r)
+            elif userChoice == '2':
+                sphereSurface(r)
+        # prompt radius + height
+        elif int(userChoice) in range(3, 7):
+            r, h = formulaInputs(2)
+            if userChoice == '3':
+                cylinderVolume(r, h)
+            elif userChoice == '4':
+                cylinderSurface(r, h)
+            elif userChoice == '5':
+                coneVolume(r, h)
+            elif userChoice == '6':
+                coneSurface(r, h)
 
 
 def sphereVolume(r):
@@ -72,27 +78,23 @@ def coneSurface(r, h):
 
 
 def menu():
-    userDecision = ''
-    optionList = ['spherical volume', 'spherical surface', 'cylinder volume',
-                  'cylinder surface', 'cone volume', 'cone surface']
-
-    while userDecision not in optionList and userDecision != 'q':  # I really cannot grasp at all
-        # why the and was needed and the or wasnt, I thought or just needed one.
-        userDecision = input("\n Which of the following calculations "
-                             "do you need: spherical volume, spherical surface,\n"
-                             "cylinder volume, cylinder surface, cone volume or"
-                             "cone surface? Otherwise enter q to quit. ")
-
-        # if unacceptable input, re-prompt user
-        if userDecision not in optionList and userDecision != 'q':
-            print("\nIncorrect choice, please enter the one of the options precisely.\n")
-    return userDecision
+    print("Which calculation is needed?")
+    print("1) spherical volume")
+    print("2) spherical surface area")
+    print("3) cylinder volume")
+    print("4) cylinder surface area")
+    print("5) cone volume")
+    print("6) cone surface area")
 
 
-def formulaInputs():
-    r = float(input("Enter the radius: "))
-    h = float(input("Enter the height: "))
-    return r, h
+def formulaInputs(check):
+    if check == 1:
+        r = float(input("Enter the radius: "))
+        return r
+    else:
+        r = float(input("Enter the radius: "))
+        h = float(input("Enter the height: "))
+        return r, h
 
 
 main()
