@@ -16,5 +16,7 @@ print("After 24 hours there will be ", format(dailyCaffeine, '.2f'), "mg in the 
 hourlyCaffeine = 0
 for hours in range(24):
     hourlyCaffeine += 130
+    if hours == 23:  # accept ingestion @ the last hour but no degeneration.
+        break
     hourlyCaffeine *= degenerationRate
 print("There will be ", format(hourlyCaffeine, '.2f'), "mg in the body after 24 hours.", sep="")
