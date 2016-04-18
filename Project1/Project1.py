@@ -4,7 +4,7 @@ def main():
 
 def read_in():
     baseballList = []
-    file = open('nyyankees.csv', 'r')
+    file = open('nyyankees.csv', 'r', encoding='utf-8-sig')
 
     for line in file:
         baseballList.append(line)
