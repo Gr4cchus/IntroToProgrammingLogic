@@ -1,0 +1,41 @@
+#read_in() will read in each line from nyyankees.csv and return it to main() only!
+#########################################
+Main will call data_process(parameter)
+	data_process will take in a list
+
+Read in an item from list
+Create a SpaceDelimitedList
+While list is not empty
+	Each item with , will be object.split()
+	Each item with "" will be object.split() #L and R strip will prob be better and \n
+  Store processed list as a SpaceDelimitedList
+
+Create a HeaderList
+For header in range of SpaceDelimitedList
+	Take the indexs of 0-x
+		Store as the HeaderList
+
+-
+Remove NAME in HeaderList
+Insert FNAME at 0 in HeaderList
+Insert LNAME at 1 in HeaderList
+Insert AVG Column (after H & AB?) in HeaderList
+-
+
+Remove the headers in SpaceDelimitedList
+	Store as the new SpaceDelimitedList
+
+-
+Read in an item from SpaceDelimitedList
+While the SpaceDelimitedList is not empty
+	Calculate the player's batting average(H/AB) #H/AB = AVG
+	Append the batting average back to HeaderList?
+-
+
+Concatenate SpaceDelimitedList and HeaderList
+	Assign this to a variable named ProcessedList
+
+Return ProcessedList to main which stores it as manipulation
+############################################
+#write_out() will take the list returned from data_process() and write it to a file
+#on disk named NyStats.<Initials>. (append fields with spaces and \n).

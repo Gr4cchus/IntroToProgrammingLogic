@@ -1,5 +1,6 @@
 def main():
-    read_in()
+    baseballList = read_in()
+    processedBaseballList = data_process(baseballList)
 
 
 def read_in():
@@ -10,11 +11,17 @@ def read_in():
         baseballList.append(line)
 
     file.close()
+    return baseballList
+
+
+def data_process(baseballList):
+    spaceDelimitedList = []
     print(baseballList)
-    return
 
-
-#def data_process():
+    for entry in baseballList:
+        spaceDelimitedList += entry.split("\"")
+    print(spaceDelimitedList)
+    return baseballList
 
 
 #def write_out():
