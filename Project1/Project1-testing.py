@@ -3,17 +3,24 @@ def main():
 
 
 def read_in():
-    baseballList = []
-    infile = open('nyyankees.csv', 'r')
+    baseballList = ''
+    myList = []
+    infile = open('nyyankees.csv', 'r', encoding='utf-8-sig')
     file_contents = infile.readline()
 
     while file_contents != "":
-        baseballList.append(file_contents)
+        # baseballList.append(file_contents)
+        # baseballList.append(''.join(file_contents))
+        baseballList += file_contents
+
         print(file_contents)
         file_contents = infile.readline()
 
+    # for entry in baseballList:
+    #     print(entry)
     infile.close()
-    print(baseballList)
+    myList.append(baseballList)
+    print(myList)
     return
 
 

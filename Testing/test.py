@@ -10,3 +10,5 @@ print(c)
 # str.replace() could be used to eliminate a loop. Replace names?
 
 # Finding player id, use c.find('x)
+mylist = ['h', 'l']
+print(mylist)
