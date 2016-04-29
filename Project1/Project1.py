@@ -4,53 +4,39 @@ def main():
 
 
 def read_in():
-    inData = []
     file = open('nyyankees.csv', 'r', encoding='utf-8-sig')
-
-    for line in file:
-        inData.append(line)
-
-    file.close()
+    inData = file.readlines()
     return inData
 
 
 def data_process(baseballList):
-    spaceDelimitedList = []
-    spaceDelimitedList2 = []
+    spaceDeliminitedList = []
     headerList = []
-    headerList2 = []
+    headerIndexedList = []
+    indexedBodyList = []
 
-    print(baseballList)
     for entry in baseballList:
-        entry = entry.rstrip('\n').replace(',', ' ').replace('"', '').replace('(', '').replace(')', '')
-        spaceDelimitedList.append(entry)
-    print("strip,replace:", spaceDelimitedList)
+        entry = entry.replace('"', '').replace(',', ' ').replace('\n', '')
+        spaceDeliminitedList.append(entry)
+    print("spaceDeliminitedList:", spaceDeliminitedList)
+    headerList.append(spaceDeliminitedList.pop(0))
+    print("headerList:", headerList)
 
-    headerList.append(spaceDelimitedList.pop(0))
-    print("header:", headerList)
     for entry in headerList:
-        headerList2.append(entry.split(' '))
-    print(headerList2)
-    # headerList2.insert(0, 'FNAME')
-    # headerList2.insert(1, 'LNAME')
-    # headerList2.insert(6, 'AVG')
-    print(headerList2)
+        print(entry)
+        entry = entry.replace('Name', "FNAME LNAME").replace("playerid", "playerid AVG").split(' ')
+        headerIndexedList.extend(entry)
+    print("headerIndexedList:", headerIndexedList)
+    print('Fields:', len(headerIndexedList))
 
-    # for entry in spaceDelimitedList:
-    #     spaceDelimitedList2.append(entry.split(' '))
-    # print("split:", spaceDelimitedList2)
+    for entry in spaceDeliminitedList:
+        entry = entry.split(' ')
+        indexedBodyList.extend(entry)
+    print("bodyIndexedList:", indexedBodyList)
 
-
+    # H 6 / AB 4
     return baseballList
 
-
-#def write_out():
-
+# def write_out():
 
 main()
-
-#
-#         entry = entry.strip('\n')
-#         entry = entry.split(',')
-#         entry = ' '.join(entry)
-#         entry = entry.split(' ')
