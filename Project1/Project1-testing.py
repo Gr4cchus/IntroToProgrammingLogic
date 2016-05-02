@@ -1,6 +1,7 @@
 def main():
     inData = read_in()
     processedBaseballList = data_process(inData)
+    print(processedBaseballList)
 
 
 def read_in():
@@ -21,14 +22,23 @@ def data_process(baseballList):
     print("indexedHeaderList:", indexedHeaderList)
 
     a = 0
+    accumulator = 0
     for entry in indexedBodyList:
         # print(entry[4:7:2])
         # print(int(entry[4]), int(entry[6]))
-        a = int(entry[6]) / int(entry[4])
+        try:
+            a = int(entry[6]) / int(entry[4])
+        except ZeroDivisionError:
+            a = 0
         print(a)
+        indexedBodyList[accumulator].append(str(a))
+        accumulator += 1
+    print(indexedBodyList)
     # H 6 / AB 4
-    return baseballList
+    final = indexedHeaderList + indexedBodyList
+    return final
 
 # def write_out():
+
 
 main()
