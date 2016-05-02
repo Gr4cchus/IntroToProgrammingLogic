@@ -40,11 +40,9 @@ def data_process(baseballList):
     #     spaceDelimitedList2.append(entry.split(' '))
     # print("split:", spaceDelimitedList2)
 
-
     return baseballList
 
-
-#def write_out():
+# def write_out():
 
 
 main()
