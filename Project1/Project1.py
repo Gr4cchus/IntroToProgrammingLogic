@@ -1,4 +1,6 @@
 import random
+
+
 def main():
     while True:
         menu()
@@ -9,6 +11,8 @@ def main():
             option1()
         if choice == '2':
             option2()
+        if choice == '3':
+            option3()
         else:
             break
 
@@ -82,9 +86,12 @@ def option1():
 def option2():  # input_team()
     filename = input("Enter the filename to create: ") + '.csv'
     fw = open(filename, 'a')
+    fr = open(filename, 'r')
     header = ["Name", "Age", "G", "AB", "PA", "H", "1B", "2B", "3B", "HR", "R", "RBI",
               "BB", "SO", "HBP", "GDP", "SB", "CS", "SLG", "OPS", "WAR", "Dol", "playerid"]
-    if fw.readline == '':
+    isEmpty = fr.readline()
+    print(isEmpty)
+    if isEmpty == '':
         for entry in header:
             if entry == header[22]:
                 fw.write('"' + entry + '"' + '\n')
@@ -118,17 +125,27 @@ def option2():  # input_team()
         fw.write('"' + input("Enter OPS: ") + '"' + ',')
         fw.write('"' + input("Enter WAR: ") + '"' + ',')
         fw.write('"' + input("Enter Dol: ") + '"' + ',')
-        fw.write('"' + str(random.randint(20000, 25001)) + '"' + '\n')   # need to import random numbers
+        fw.write('"' + str(random.randint(20000, 25001)) + '"' + '\n')
         if input("Enter exit, otherwise press enter to continue adding players") == 'exit':
             break
     fw.close()
+    fr.close()
     inData = read_in(filename)
     processedBaseballList = data_process(inData)
     write_out(processedBaseballList)    # will write to NyStats.ah though.
     print("The data has been processed")
 
 
-# def option3():
-#     print("Slow down")
+def option3():
+    print("User identified as having to much hair, shave off the excess hair to unlock "
+          "this really cool feature.\n")
+    # filename = input('Enter the desired filename damnit: ')
+    # playerID = input('Enter the desired playerID fat fingers: ')
+    # fr = open(filename, 'r', encoding='utf-8-sig')
+    # fr.readline()
+    # if fr in playerID:
+    #     print("")
+    # else:
+    #     print("not found")
 
 main()

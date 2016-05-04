@@ -12,3 +12,14 @@ print(c)
 # Finding player id, use c.find('x)
 mylist = ['h', 'l']
 print(mylist)
+
+# file reading
+
+inData = []
+file = open('test.csv', 'r', encoding='utf-8-sig')
+file.readline()
+for entry in file:
+    # inData.append(line)
+    print('entry', entry)
+file.close()
+print(inData)
