@@ -84,7 +84,7 @@ def option2():  # input_team()
     fw = open(filename, 'a')
     header = ["Name", "Age", "G", "AB", "PA", "H", "1B", "2B", "3B", "HR", "R", "RBI",
               "BB", "SO", "HBP", "GDP", "SB", "CS", "SLG", "OPS", "WAR", "Dol", "playerid"]
-    if fw.readlines == '':
+    if fw.readline == '':
         for entry in header:
             if entry == header[22]:
                 fw.write('"' + entry + '"' + '\n')
@@ -122,9 +122,9 @@ def option2():  # input_team()
         if input("Enter exit, otherwise press enter to continue adding players") == 'exit':
             break
     fw.close()
-    inData = read_in(fw)
+    inData = read_in(filename)
     processedBaseballList = data_process(inData)
-    write_out(processedBaseballList)
+    write_out(processedBaseballList)    # will write to NyStats.ah though.
     print("The data has been processed")
 
 
