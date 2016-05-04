@@ -1,22 +1,29 @@
+import random
 def main():
-    inData = read_in()
-    processedBaseballList = data_process(inData)
-    write_out(processedBaseballList)
-    print("The data has been processed")
+    while True:
+        menu()
+        choice = input("Enter your menu selection: ")
+        while choice != '1' and choice != '2' and choice != '3' and choice != '4':
+            choice = input("Unacceptable selection, pick again : ")
+        if choice == '1':
+            option1()
+        if choice == '2':
+            option2()
+        else:
+            break
 
 
-def read_in():
+def read_in(filename):
     try:
-        file = open('nyyankees.csv', 'r', encoding='utf-8-sig')
+        file = open(filename, 'r', encoding='utf-8-sig')
         inData = file.readlines()
         return inData
     except FileNotFoundError:
         print("File is not found.")
-        inputFilename = input("Enter the correct filename: ")
+        inputFilename = input("Enter the correct filename: ") + '.csv'
         file = open(inputFilename, 'r', encoding='utf-8-sig')
         inData = file.readlines()
         return inData
-
 
 
 def data_process(baseballList):
@@ -24,7 +31,8 @@ def data_process(baseballList):
     indexedHeaderList = []
 
     for entry in baseballList:
-        entry = entry.replace('"', '').replace(',', ' ').replace('\n', '').replace('Name', "FNAME LNAME").replace("playerid", "playerid AVG").split(' ')
+        entry = entry.replace('"', '').replace(',', ' ').replace('\n', '').replace('Name', "FNAME LNAME").replace(
+            "playerid", "playerid AVG").split(' ')
         indexedBodyList.append(entry)
     indexedHeaderList.extend(indexedBodyList.pop(0))
     # print("indexedBodyList:", indexedBodyList)
@@ -36,7 +44,7 @@ def data_process(baseballList):
         # print(entry[4:7:2])
         # print(int(entry[4]), int(entry[6]))
         try:
-            avg = int(entry[6]) / int(entry[4])   # H/AB
+            avg = int(entry[6]) / int(entry[4])  # H/AB
         except ZeroDivisionError:
             avg = 0
         # print(a)
@@ -53,5 +61,74 @@ def write_out(processedBaseballList):
         entry = ','.join(entry).replace(',', ' ') + '\n'
         # print(entry)
         NyStats.write(entry)
+    NyStats.close()
+
+
+def menu():
+    print("1. Import, clean and covert file")
+    print("2. Create a new file from scratch")
+    print("3. Search player stats")
+    print("4. Quit")
+
+
+def option1():
+    filename = input("Enter the local filename: ") + '.csv'
+    inData = read_in(filename)
+    processedBaseballList = data_process(inData)
+    write_out(processedBaseballList)
+    print("The data has been processed")
+
+
+def option2():
+    filename = input("Enter the filename to create: ") + '.csv'
+    fw = open(filename, 'a')
+    header = ["Name", "Age", "G", "AB", "PA", "H", "1B", "2B", "3B", "HR", "R", "RBI",
+              "BB", "SO", "HBP", "GDP", "SB", "CS", "SLG", "OPS", "WAR", "Dol", "playerid"]
+    if fw.readlines == '':
+        for entry in header:
+            if entry == header[22]:
+                fw.write('"' + entry + '"' + '\n')
+                break
+            fw.write('"' + entry + '"' + ',')
+
+    while True:
+    #     for entry in header:
+    #         if entry == header[22]:
+    #             fw.write('"' + random.randint(20000, 25001) + '"')
+    #         fw.write('"' + input("Enter ", entry, ': ', sep='') + '"' + ',')
+        fw.write('"' + input("Enter NAME: ") + '"' + ',')
+        fw.write('"' + input("Enter Age: ") + '"' + ',')
+        fw.write('"' + input("Enter G: ") + '"' + ',')
+        fw.write('"' + input("Enter AB: ") + '"' + ',')
+        fw.write('"' + input("Enter PA: ") + '"' + ',')
+        fw.write('"' + input("Enter H: ") + '"' + ',')
+        fw.write('"' + input("Enter 1B: ") + '"' + ',')
+        fw.write('"' + input("Enter 2B: ") + '"' + ',')
+        fw.write('"' + input("Enter 3B: ") + '"' + ',')
+        fw.write('"' + input("Enter HR: ") + '"' + ',')
+        fw.write('"' + input("Enter R: ") + '"' + ',')
+        fw.write('"' + input("Enter RBI: ") + '"' + ',')
+        fw.write('"' + input("Enter BB: ") + '"' + ',')
+        fw.write('"' + input("Enter SO: ") + '"' + ',')
+        fw.write('"' + input("Enter HBP: ") + '"' + ',')
+        fw.write('"' + input("Enter GDP: ") + '"' + ',')
+        fw.write('"' + input("Enter SB: ") + '"' + ',')
+        fw.write('"' + input("Enter CS: ") + '"' + ',')
+        fw.write('"' + input("Enter SLG: ") + '"' + ',')
+        fw.write('"' + input("Enter OPS: ") + '"' + ',')
+        fw.write('"' + input("Enter WAR: ") + '"' + ',')
+        fw.write('"' + input("Enter Dol: ") + '"' + ',')
+        fw.write('"' + str(random.randint(20000, 25001)) + '"' + '\n')   # need to import random numbers
+        if input("Enter exit, otherwise press enter to continue adding players") == 'exit':
+            break
+    fw.close()
+    inData = read_in(fw)
+    processedBaseballList = data_process(inData)
+    write_out(processedBaseballList)
+    print("The data has been processed")
+
+
+# def option3():
+#     print("Slow down")
 
 main()
