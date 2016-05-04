@@ -79,7 +79,7 @@ def option1():
     print("The data has been processed")
 
 
-def option2():
+def option2():  # input_team()
     filename = input("Enter the filename to create: ") + '.csv'
     fw = open(filename, 'a')
     header = ["Name", "Age", "G", "AB", "PA", "H", "1B", "2B", "3B", "HR", "R", "RBI",
